@@ -1,6 +1,6 @@
 var monk         = require('monk');
 var wrap         = require('co-monk');
-var db           = monk('localhost/gs-web');
+var db           = monk(process.env.MONGO_URL);
 var landingPages = wrap(db.get('landingpages'));
 
 module.exports = {

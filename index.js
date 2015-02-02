@@ -3,10 +3,12 @@ var router    = require('koa-router');
 var mount     = require('koa-mount');
 var cors      = require('koa-cors');
 var server    = koa();
-var APIRouter = new router();
-var api       = require('./api.js');
 
+process.env.MONGO_URL = process.env.MONGO_URL || 'localhost/gs-web';
 server.use(cors({ credentials: true }));
+
+var api = require('./api.js');
+var APIRouter = new router();
 
 // routes
 APIRouter.get('/landing-pages.json', api.getAllLandingPages);
