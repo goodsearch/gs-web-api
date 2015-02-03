@@ -1,11 +1,19 @@
-var koa       = require('koa');
-var router    = require('koa-router');
-var mount     = require('koa-mount');
-var cors      = require('koa-cors');
-var server    = koa();
+var koa      = require('koa');
+var router   = require('koa-router');
+var mount    = require('koa-mount');
+var cors     = require('koa-cors');
+var compress = require('koa-compress');
+var config   = require('config');
 
-process.env.MONGO_URL = process.env.MONGO_URL || 'localhost/gs-web';
+var server = module.exports = koa();
+
+process.env.MONGO_URL = process.env.MONGO_URL || config.get('mongoUrl');
 server.use(cors({ credentials: true }));
+
+server.use(compress({
+  threshold:  2048,
+  flush:      require('zlib').Z_SYNC_FLUSH
+}));
 
 var api = require('./api.js');
 var APIRouter = new router();

@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node --harmony ./index.js",
-    "test": "mocha --check-leaks --recursive test/**/*-test.*"
+    "test": "NODE_ENV=test node --harmony ./node_modules/.bin/gulp test-once",
+    "dev": "NODE_ENV=development node --harmony ./node_modules/.bin/gulp watch nodemon"
   },
   "author": "Evan Sherwood <evan@neezer.net>",
   "license": "ISC",
@@ -19,13 +20,22 @@
   },
   "devDependencies": {
     "better-assert": "^1.0.2",
-    "mocha": "^2.1.0"
+    "chai": "^1.10.0",
+    "co-supertest": "0.0.7",
+    "database-cleaner": "^0.9.1",
+    "gulp": "^3.8.10",
+    "gulp-exit": "0.0.2",
+    "gulp-mocha-co": "^0.4.1-co.3",
+    "gulp-nodemon": "^1.0.5",
+    "mocha": "^2.1.0",
+    "mongodb": "^1.4.30",
+    "supertest": "^0.15.0"
   },
   "dependencies": {
     "co-monk": "^1.0.0",
-    "gulp": "^3.8.10",
-    "gulp-nodemon": "^1.0.5",
+    "config": "^1.10.0",
     "koa": "^0.15.0",
+    "koa-compress": "^1.0.8",
     "koa-cors": "0.0.14",
     "koa-mount": "^1.3.0",
     "koa-router": "^3.8.0",
