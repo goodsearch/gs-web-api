@@ -6,4 +6,4 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: agile-atoll-5805
+      appname: gs-web-api
