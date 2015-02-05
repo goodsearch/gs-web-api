@@ -13,9 +13,9 @@ gulp.task('nodemon', function() {
 
 gulp.task('default', ['nodemon', 'mocha', 'watch']);
 
-gulp.task('test-once', function() {
-  gulp.tasks.mocha.fn().pipe(exit());
-});
+// gulp.task('test-once', function() {
+//   gulp.tasks.mocha.fn().pipe(exit());
+// });
 
 gulp.task('watch', function() {
   gulp.watch(['*.js', 'test/**/*.test.js'], ['mocha']);

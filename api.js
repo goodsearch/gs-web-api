@@ -1,7 +1,4 @@
-var monk         = require('monk');
-var wrap         = require('co-monk');
-var db           = monk(process.env.MONGO_URL);
-var landingPages = wrap(db.get('landingpages'));
+var landingPages = require('./db.js')('landingpages');
 
 module.exports = {
   getLandingPage: function *() {
